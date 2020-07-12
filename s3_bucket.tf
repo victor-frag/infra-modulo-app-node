@@ -17,7 +17,7 @@ resource "aws_s3_bucket_object" "bucket_object_ansible_upload" {
   key = "ansible/ansible.zip"
 
   # The path to a file that will be read and uploaded as raw bytes for the object content.
-  source = "ansible/ansible.zip"
+  source = "${path.module}/ansible/ansible.zip"
 
   acl = "private"
 
