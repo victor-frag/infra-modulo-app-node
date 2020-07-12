@@ -39,7 +39,7 @@ resource "aws_instance" "database" {
   key_name = "ssh_key"
 
   # Script which will run as soon as the instance start
-  user_data = templatefile("scripts/user_data_db.sh.tlp", { 
+  user_data = templatefile("${path.module}/scripts/user_data_db.sh.tlp", { 
     database_name = var.db_name, 
     database_user = var.db_user, 
     database_password = var.db_password 
@@ -91,7 +91,7 @@ resource "aws_instance" "app_server" {
   }
 
   # Script which will run as soon as the instance start
-  user_data = templatefile("scripts/user_data_app.sh.tlp", { 
+  user_data = templatefile("${path.module}/scripts/user_data_app.sh.tlp", { 
     db_ip = aws_instance.database.private_ip,
     database_name = var.db_name,
     database_user = var.db_user,
