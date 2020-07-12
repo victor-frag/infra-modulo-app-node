@@ -79,7 +79,7 @@ resource "aws_instance" "app_server" {
   key_name = "ssh_key"
 
   provisioner "file" {
-    source      = "keys/ssh_key"
+    source      = "${path.module}/keys/ssh_key"
     destination = "/home/ubuntu/.ssh/id_rsa"
 
     connection {
