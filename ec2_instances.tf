@@ -86,7 +86,7 @@ resource "aws_instance" "app_server" {
       type     = "ssh"
       user     = "ubuntu"
       host     = self.public_ip
-      private_key = file("keys/ssh_key")
+      private_key = file("${path.module}/keys/ssh_key")
     }
   }
 
