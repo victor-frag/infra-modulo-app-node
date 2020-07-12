@@ -1,0 +1,12 @@
+#!/bin/bash
+# cloud-init vs ansible bug requires the HOME environment variable to be set.
+# Ver https://github.com/ansible/ansible/issues/31617#issuecomment-337029203
+export HOME=/root
+cd /tmp
+apt-get update && apt-get install -y python ansible unzip awscli postgresql-client
+chmod 400 /home/ubuntu/.ssh/id_rsa
+aws s3 cp s3://repofinalwork/ansible/ansible.zip ansible.zip
+unzip ansible.zip
+aws s3 cp s3://repofinalwork/node_app/node-js-getting-started.zip node-js-getting-started.zip
+unzip node-js-getting-started.zip -d node-js-getting-started
+sudo ansible-playbook -vvv -i hosts_app provisioning.yaml --extra-vars "db_ip=${db_ip} database_name=${database_name} database_user=${database_user} database_password=${database_password}"
