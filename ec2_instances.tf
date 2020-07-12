@@ -12,7 +12,7 @@ data "aws_ami" "ubuntu_18_04" {
 # Generating a keypair to use on the machines
 resource "aws_key_pair" "ssh_key_pair" {
   key_name = "ssh_key"
-  public_key = file("keys/ssh_key.pub")
+  public_key = file("${path.module}/keys/ssh_key.pub")
 }
 
 # Database instance
