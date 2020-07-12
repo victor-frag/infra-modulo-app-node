@@ -49,7 +49,7 @@ resource "aws_iam_role" "ec2_s3_iam_access_role" {
   name = "allow-sts-assume-role"
 
   # The policy that grants an entity permission to assume the role
-  assume_role_policy = file("policies/allow_sts_assume_role_policy.json")
+  assume_role_policy = file("policies\allow_sts_assume_role_policy.json")
 
   tags = {
       Name = "IAM Role EC2 to S3"
@@ -62,7 +62,7 @@ resource "aws_iam_policy" "s3_iam_policy" {
   description = "Policy to allow access to S3"
 
   # The policy document
-  policy = file("policies/allow_s3_policy.json")
+  policy = file("policies\allow_s3_policy.json")
 }
 
 # Attaches a Managed IAM Policy to the IAM Role
