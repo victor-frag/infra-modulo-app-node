@@ -4,8 +4,7 @@ Module format expected:
 
 ```
 module "app_node" {
-  source = "git::https://github.com/<seu
-usuario>/infra-modulo-app-node.git?ref=v1.0.0"
+  source = "git::https://github.com/victor-frag/infra-modulo-app-node.git?ref=v2.0.0"
   project_name = "app"
   db_name = "pg_db"
   db_user = "pg_user"
